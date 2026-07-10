@@ -247,18 +247,18 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-50 flex flex-col justify-center items-center p-4">
-      <div className="w-full max-w-lg bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-3xl shadow-xl p-8 space-y-6">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-center items-center p-4">
+      <div className="w-full max-w-lg bg-white border border-slate-200 rounded-3xl shadow-xl p-8 space-y-6">
         
         {/* Top Header Row Layout */}
-        <div className="flex justify-between items-center border-b border-slate-100 dark:border-zinc-800 pb-4">
+        <div className="flex justify-between items-center border-b border-slate-100 pb-4">
           <div>
             <h1 className="text-xl font-bold capitalize">{role} Control Gate</h1>
-            <p className="text-xs text-slate-500 dark:text-zinc-400">Trace workspace security checkpoint</p>
+            <p className="text-xs text-slate-500">Trace workspace security checkpoint</p>
           </div>
           <button 
             onClick={onBack} 
-            className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 border border-slate-200 dark:border-zinc-700 px-3 py-1.5 rounded-xl transition"
+            className="text-xs text-slate-400 hover:text-slate-600 border border-slate-200 px-3 py-1.5 rounded-xl transition"
           >
             ← Back
           </button>
@@ -271,7 +271,7 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
               initial={{ opacity: 0, height: 0 }} 
               animate={{ opacity: 1, height: 'auto' }} 
               exit={{ opacity: 0, height: 0 }}
-              className="p-3.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 text-red-600 dark:text-red-400 rounded-xl text-xs font-mono whitespace-pre-wrap overflow-x-auto"
+              className="p-3.5 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-mono whitespace-pre-wrap overflow-x-auto"
             >
               ⚠️ Code Exception: {errorMsg}
             </motion.div>
@@ -283,18 +283,18 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
               exit={{ opacity: 0, height: 0 }}
               className="space-y-3"
             >
-              <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/60 text-emerald-600 dark:text-emerald-400 rounded-xl text-xs font-medium">
+              <div className="p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-xl text-xs font-medium">
                 🚀 Execution Block: {successMsg}
               </div>
               
               {/* Aligned semantic code badge */}
               {generatedKey && (
-                <div className="p-4 bg-slate-100 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-2xl flex items-center justify-between">
+                <div className="p-4 bg-slate-100 border border-slate-200 rounded-2xl flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <span className="text-[10px] font-bold tracking-wider text-slate-400 dark:text-zinc-500 uppercase">System Extracted Key</span>
-                    <span className="text-xs text-slate-600 dark:text-zinc-400 block font-medium">Use this code to pass gateway validation:</span>
+                    <span className="text-[10px] font-bold tracking-wider text-slate-400 uppercase">System Extracted Key</span>
+                    <span className="text-xs text-slate-600 block font-medium">Use this code to pass gateway validation:</span>
                   </div>
-                  <div className="px-4 py-2 bg-white dark:bg-zinc-800 border border-slate-300 dark:border-zinc-700 rounded-xl font-mono text-base font-extrabold text-slate-900 dark:text-white tracking-widest shadow-sm">
+                  <div className="px-4 py-2 bg-white border border-slate-300 rounded-xl font-mono text-base font-extrabold text-slate-900 tracking-widest shadow-sm">
                     {generatedKey}
                   </div>
                 </div>
@@ -305,26 +305,26 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
 
         {/* Properly Structured 3-Tab Group Navigation for Users */}
         {role === 'user' && (
-          <div className="grid grid-cols-3 gap-1.5 bg-slate-100 dark:bg-zinc-950 p-1.5 rounded-2xl border border-slate-200/60 dark:border-zinc-800/40 text-xs font-semibold">
+          <div className="grid grid-cols-3 gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200/60 text-xs font-semibold">
             <button
               onClick={() => { setUserMode('gateway'); setErrorMsg(null); setSuccessMsg(null); setGeneratedKey(null); }}
-              className={`py-2 rounded-xl transition flex items-center justify-center gap-1.5 ${userMode === 'gateway' ? 'bg-white dark:bg-zinc-800 shadow-sm text-slate-900 dark:text-white border border-slate-200/40 dark:border-zinc-700' : 'text-slate-500 hover:text-slate-800 dark:hover:text-zinc-300'}`}
+              className={`py-2 rounded-xl transition flex items-center justify-center gap-1.5 ${userMode === 'gateway' ? 'bg-white shadow-sm text-slate-900 border border-slate-200/40' : 'text-slate-500 hover:text-slate-800'}`}
             >
-              <KeyRound className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /> 
+              <KeyRound className="w-3.5 h-3.5 text-zinc-400" /> 
               Gateway
             </button>
             <button
               onClick={() => { setUserMode('register'); setErrorMsg(null); setSuccessMsg(null); setGeneratedKey(null); }}
-              className={`py-2 rounded-xl transition flex items-center justify-center gap-1.5 ${userMode === 'register' ? 'bg-white dark:bg-zinc-800 shadow-sm text-slate-900 dark:text-white border border-slate-200/40 dark:border-zinc-700' : 'text-slate-500 hover:text-slate-800 dark:hover:text-zinc-300'}`}
+              className={`py-2 rounded-xl transition flex items-center justify-center gap-1.5 ${userMode === 'register' ? 'bg-white shadow-sm text-slate-900 border border-slate-200/40' : 'text-slate-500 hover:text-slate-800'}`}
             >
-              <Users className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /> 
+              <Users className="w-3.5 h-3.5 text-zinc-400" /> 
               Register Staff
             </button>
             <button
               onClick={() => { setUserMode('create-project'); setErrorMsg(null); setSuccessMsg(null); setGeneratedKey(null); }}
-              className={`py-2 rounded-xl transition flex items-center justify-center gap-1.5 ${userMode === 'create-project' ? 'bg-white dark:bg-zinc-800 shadow-sm text-slate-900 dark:text-white border border-slate-200/40 dark:border-zinc-700' : 'text-slate-500 hover:text-slate-800 dark:hover:text-zinc-300'}`}
+              className={`py-2 rounded-xl transition flex items-center justify-center gap-1.5 ${userMode === 'create-project' ? 'bg-white shadow-sm text-slate-900 border border-slate-200/40' : 'text-slate-500 hover:text-slate-800'}`}
             >
-              <FolderPlus className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /> 
+              <FolderPlus className="w-3.5 h-3.5 text-zinc-400" /> 
               New Project
             </button>
           </div>
@@ -333,16 +333,16 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
         {/* Administration Governance Layout Check */}
         {role === 'admin' && (
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-1.5 bg-slate-100 dark:bg-zinc-950 p-1.5 rounded-2xl border border-slate-200/60 dark:border-zinc-800/40 text-xs font-semibold">
+            <div className="grid grid-cols-2 gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200/60 text-xs font-semibold">
               <button
                 onClick={() => { setAdminMode('login'); setErrorMsg(null); setSuccessMsg(null); }}
-                className={`py-2 rounded-xl transition ${adminMode === 'login' ? 'bg-white dark:bg-zinc-800 shadow-sm text-slate-900 dark:text-white border border-slate-200/40 dark:border-zinc-700' : 'text-slate-500 hover:text-slate-800 dark:hover:text-zinc-300'}`}
+                className={`py-2 rounded-xl transition ${adminMode === 'login' ? 'bg-white shadow-sm text-slate-900 border border-slate-200/40' : 'text-slate-500 hover:text-slate-800'}`}
               >
                 Admin Login
               </button>
               <button
                 onClick={() => { setAdminMode('signup'); setErrorMsg(null); setSuccessMsg(null); }}
-                className={`py-2 rounded-xl transition ${adminMode === 'signup' ? 'bg-white dark:bg-zinc-800 shadow-sm text-slate-900 dark:text-white border border-slate-200/40 dark:border-zinc-700' : 'text-slate-500 hover:text-slate-800 dark:hover:text-zinc-300'}`}
+                className={`py-2 rounded-xl transition ${adminMode === 'signup' ? 'bg-white shadow-sm text-slate-900 border border-slate-200/40' : 'text-slate-500 hover:text-slate-800'}`}
               >
                 Admin Signup
               </button>
@@ -351,67 +351,67 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
             {adminMode === 'login' ? (
               <form onSubmit={handleAdminLoginSubmit} className="space-y-3">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Username</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Username</label>
                   <input
                     type="text"
                     required
                     value={adminLoginData.username}
                     onChange={(e) => setAdminLoginData({ ...adminLoginData, username: e.target.value })}
                     placeholder="admin"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 transition text-slate-900"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Password</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Password</label>
                   <input
                     type="password"
                     required
                     value={adminLoginData.password}
                     onChange={(e) => setAdminLoginData({ ...adminLoginData, password: e.target.value })}
                     placeholder="••••••••"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 transition text-slate-900"
                   />
                 </div>
-                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 dark:bg-white text-white dark:text-black py-2.5 rounded-xl font-bold hover:opacity-90 transition text-sm shadow-sm">
+                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 text-white py-2.5 rounded-xl font-bold hover:opacity-90 transition text-sm shadow-sm">
                   {isLoading ? 'Verifying admin session...' : 'Unlock Admin Console'}
                 </button>
               </form>
             ) : (
               <form onSubmit={handleAdminSignupSubmit} className="space-y-3">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Full Name</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Full Name</label>
                   <input
                     type="text"
                     required
                     value={adminSignupData.fullName}
                     onChange={(e) => setAdminSignupData({ ...adminSignupData, fullName: e.target.value })}
                     placeholder="System Administrator"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 transition text-slate-900"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Username</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Username</label>
                   <input
                     type="text"
                     required
                     value={adminSignupData.username}
                     onChange={(e) => setAdminSignupData({ ...adminSignupData, username: e.target.value })}
                     placeholder="admin"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 transition text-slate-900"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Password</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Password</label>
                   <input
                     type="password"
                     required
                     value={adminSignupData.password}
                     onChange={(e) => setAdminSignupData({ ...adminSignupData, password: e.target.value })}
                     placeholder="Create a secure password"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 transition text-slate-900"
                   />
                 </div>
-                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 dark:bg-white text-white dark:text-black py-2.5 rounded-xl font-bold hover:opacity-90 transition text-sm shadow-sm">
+                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 text-white py-2.5 rounded-xl font-bold hover:opacity-90 transition text-sm shadow-sm">
                   {isLoading ? 'Creating admin account...' : 'Create Admin Account'}
                 </button>
               </form>
@@ -427,28 +427,28 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
             {userMode === 'gateway' && (
               <form onSubmit={handleGatewaySubmit} className="space-y-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Employee ID Code</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Employee ID Code</label>
                   <input
                     type="text"
                     required
                     value={gatewayData.employeeId}
                     onChange={(e) => setGatewayData({ ...gatewayData, employeeId: e.target.value })}
                     placeholder="e.g., EMP01"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 uppercase transition text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 uppercase transition text-slate-900"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Project Key Prefix</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Project Key Prefix</label>
                   <input
                     type="text"
                     required
                     value={gatewayData.projectKey}
                     onChange={(e) => setGatewayData({ ...gatewayData, projectKey: e.target.value })}
                     placeholder="e.g., TEJ, TRACE"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 uppercase transition tracking-wider text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 uppercase transition tracking-wider text-slate-900"
                   />
                 </div>
-                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 dark:bg-white text-white dark:text-black py-2.5 rounded-xl font-bold text-sm tracking-wide hover:opacity-90 active:scale-[0.99] transition shadow mt-2">
+                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 text-white py-2.5 rounded-xl font-bold text-sm tracking-wide hover:opacity-90 active:scale-[0.99] transition shadow mt-2">
                   {isLoading ? 'Decrypting Security Handshake...' : 'Unlock Project Space →'}
                 </button>
               </form>
@@ -459,37 +459,37 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
               <form onSubmit={handleEmployeeRegisterSubmit} className="space-y-3 max-h-96 overflow-y-auto pr-1">
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Employee ID</label>
-                    <input required value={employeeRegisterData.employeeId} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, employeeId: e.target.value })} className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 dark:focus:border-zinc-600 uppercase transition text-slate-900 dark:text-zinc-50" placeholder="EMP01" />
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Employee ID</label>
+                    <input required value={employeeRegisterData.employeeId} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, employeeId: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 uppercase transition text-slate-900" placeholder="EMP01" />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Full Name</label>
-                    <input required value={employeeRegisterData.fullName} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, fullName: e.target.value })} className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50" placeholder="Tej Singh" />
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Full Name</label>
+                    <input required value={employeeRegisterData.fullName} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, fullName: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 transition text-slate-900" placeholder="Tej Singh" />
                   </div>
                 </div>
                 
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Corporate Email</label>
-                  <input type="email" required value={employeeRegisterData.email} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, email: e.target.value })} className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50" placeholder="tej@company.com" />
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Corporate Email</label>
+                  <input type="email" required value={employeeRegisterData.email} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, email: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 transition text-slate-900" placeholder="tej@company.com" />
                 </div>
                 
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Phone Number</label>
-                  <input type="tel" value={employeeRegisterData.phoneNumber} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, phoneNumber: e.target.value })} className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50" placeholder="+91 91234 56789" />
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Phone Number</label>
+                  <input type="tel" value={employeeRegisterData.phoneNumber} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, phoneNumber: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 transition text-slate-900" placeholder="+91 91234 56789" />
                 </div>
                 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Department</label>
-                    <select value={employeeRegisterData.department} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, department: e.target.value })} className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-slate-800 rounded-xl px-2 py-2 text-sm outline-none text-slate-600 dark:text-zinc-400 font-medium">
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Department</label>
+                    <select value={employeeRegisterData.department} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, department: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2 py-2 text-sm outline-none text-slate-600 font-medium">
                       <option value="Engineering">Engineering Track</option>
                       <option value="Product Delivery">Product Delivery</option>
                       <option value="Quality Assurance">Quality Assurance</option>
                     </select>
                   </div>
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Designation</label>
-                    <select value={employeeRegisterData.designation} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, designation: e.target.value })} className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-slate-800 rounded-xl px-2 py-2 text-sm outline-none text-slate-600 dark:text-zinc-400 font-medium">
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Designation</label>
+                    <select value={employeeRegisterData.designation} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, designation: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-2 py-2 text-sm outline-none text-slate-600 font-medium">
                       <option value="Developer">Developer</option>
                       <option value="Tester">Tester</option>
                       <option value="Designer">UI/UX Designer</option>
@@ -501,11 +501,11 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Skills Inventory Tags</label>
-                  <input value={employeeRegisterData.skills} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, skills: e.target.value })} className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50" placeholder="Python, FastAPI, React (Split with commas)" />
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Skills Inventory Tags</label>
+                  <input value={employeeRegisterData.skills} onChange={(e) => setEmployeeRegisterData({ ...employeeRegisterData, skills: e.target.value })} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-zinc-400 transition text-slate-900" placeholder="Python, FastAPI, React (Split with commas)" />
                 </div>
 
-                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 dark:bg-white text-white dark:text-black py-2.5 rounded-xl font-semibold hover:opacity-90 transition mt-3 text-sm shadow">
+                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 text-white py-2.5 rounded-xl font-semibold hover:opacity-90 transition mt-3 text-sm shadow">
                   {isLoading ? 'Onboarding...' : 'Onboard Profile Directory'}
                 </button>
               </form>
@@ -515,33 +515,33 @@ export default function AuthPage({ role, onBack, onAuthSuccess }: AuthPageProps)
             {userMode === 'create-project' && (
               <form onSubmit={handleProjectCreateSubmit} className="space-y-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Project Corporate Name</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Project Corporate Name</label>
                   <input
                     type="text"
                     required
                     value={projectCreateData.projectName}
                     onChange={(e) => setProjectCreateData({ ...projectCreateData, projectName: e.target.value })}
                     placeholder="e.g., Trace Platform, Team Tej Workspace"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 transition text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 transition text-slate-900"
                   />
                 </div>
                 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider pl-0.5">Team Leader Employee ID</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider pl-0.5">Team Leader Employee ID</label>
                   <input
                     type="text"
                     required
                     value={projectCreateData.employeeId}
                     onChange={(e) => setProjectCreateData({ ...projectCreateData, employeeId: e.target.value })}
                     placeholder="e.g., EMP01"
-                    className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-600 uppercase transition text-slate-900 dark:text-zinc-50"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-400 uppercase transition text-slate-900"
                   />
-                  <span className="text-[10px] text-slate-400 dark:text-zinc-500 block pl-0.5 font-medium leading-relaxed">
+                  <span className="text-[10px] text-slate-400 block pl-0.5 font-medium leading-relaxed">
                     The backend automatically processes this text parameter to construct short recognizable keys and seeds the 9 custom workflow columns.
                   </span>
                 </div>
 
-                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 hover:bg-slate-700 dark:bg-zinc-50 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 py-2.5 rounded-xl font-bold text-sm tracking-wide transition shadow mt-2 flex items-center justify-center gap-2" >
+                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 hover:bg-slate-700 text-white py-2.5 rounded-xl font-bold text-sm tracking-wide transition shadow mt-2 flex items-center justify-center gap-2" >
                   <Layers className="w-4 h-4" />
                   {isLoading ? 'Seeding Agile Status Lanes...' : 'Initialize New Project Space'}
                 </button>

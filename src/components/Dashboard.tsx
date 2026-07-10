@@ -1,11 +1,6 @@
-import { useTheme } from '../context/ThemeContext';
-import { Moon, Sun } from 'lucide-react';
-import TeamPage from './TeamPage';
 import KanbanPage from './KanbanPage';
-import FloatingAIBot from './FloatingAIBot';
 import BacklogPage from './BacklogPage';
 import SprintPage from './SprintPage';
-import TeamChatPage from './TeamChatPage';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import {
@@ -18,13 +13,14 @@ import {
   CheckCircle2,
   LogOut,
   Search,
-  Settings,
   Sparkles,
   TrendingUp,
+  User,
   Users,
   UserPlus,
   FolderPlus,
 } from 'lucide-react';
+import ProfilePage from './ProfilePage';
 import {
   buildWorkspacePath,
   getDefaultProjectSlug,
@@ -101,7 +97,6 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
     projectName: '',
   });
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   const notifications = [
     {
@@ -437,8 +432,8 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                   Overview
                 </p>
 
-                <h1 className="mt-2 text-3xl font-bold text-slate-950 dark:text-white">
-                  {currentProject.name} <span className="text-slate-400 dark:text-slate-500">·</span> {currentProject.key}
+                <h1 className="mt-2 text-3xl font-bold text-slate-950">
+                  {currentProject.name} <span className="text-slate-400">·</span> {currentProject.key}
                 </h1>
 
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
@@ -480,10 +475,10 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
             </div>
 
             <div className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-[1.05fr_0.95fr]">
-              <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-950 dark:text-white">
+                    <h2 className="text-lg font-semibold text-slate-950">
                       Activity Feed
                     </h2>
                     <p className="text-sm text-slate-500">
@@ -500,7 +495,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                       className="rounded-2xl border border-slate-100 bg-slate-50 p-4 shadow-sm"
                     >
                       <p className="text-sm text-slate-800">
-                        <span className="font-semibold text-slate-950 dark:text-white">
+                        <span className="font-semibold text-slate-950">
                           {activity.user}
                         </span>{' '}
                         {activity.action}
@@ -513,10 +508,10 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                 </div>
               </section>
               
-              <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-950 dark:text-white">
+                    <h2 className="text-lg font-semibold text-slate-950">
                       Team Snapshot
                     </h2>
                     <p className="text-sm text-slate-500">
@@ -538,7 +533,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                         {member.charAt(0)}
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-slate-950 dark:text-white">
+                        <p className="text-sm font-semibold text-slate-950">
                           {member}
                         </p>
                         <p className="text-xs text-slate-500">
@@ -550,7 +545,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                 </div>
 
                 <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50 p-4">
-                  <p className="text-sm font-semibold text-slate-950 dark:text-white">
+                  <p className="text-sm font-semibold text-slate-950">
                     Backlog
                   </p>
                   <p className="mt-1 text-sm text-slate-500">
@@ -587,8 +582,14 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
           />
         );
 
-      case 'chat':
-        return <TeamChatPage />;
+      case 'profile':
+        return (
+          <ProfilePage
+            workspace={workspace}
+            token={token}
+            employeeProjects={employeeProjects}
+          />
+        );
 
       
 
@@ -605,7 +606,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
                   Create Project
                 </p>
-                <h1 className="mt-2 text-3xl font-bold text-slate-950 dark:text-white">
+                <h1 className="mt-2 text-3xl font-bold text-slate-950">
                   Start a new workspace
                 </h1>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
@@ -618,7 +619,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
               </div>
             </div>
 
-            <section className="max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+            <section className="max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <form className="space-y-4" onSubmit={handleCreateProjectSubmit}>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
@@ -628,25 +629,25 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                     value={projectForm.projectName}
                     onChange={(event) => setProjectForm({ projectName: event.target.value })}
                     placeholder="e.g. Trace Mobile Revamp"
-                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10"
                   />
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
                       Project Slug Preview
                     </p>
-                    <p className="mt-2 font-mono text-sm text-slate-700 dark:text-slate-200">
+                    <p className="mt-2 font-mono text-sm text-slate-700">
                       {projectForm.projectName ? buildProjectSlug(projectForm.projectName) : 'project-slug'}
                     </p>
                   </div>
 
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
                       Creator Employee ID
                     </p>
-                    <p className="mt-2 font-mono text-sm text-slate-700 dark:text-slate-200">
+                    <p className="mt-2 font-mono text-sm text-slate-700">
                       {workspace.employeeId || 'Not available'}
                     </p>
                   </div>
@@ -683,13 +684,13 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
   };
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef2ff_48%,#f8fafc_100%)] text-slate-950 dark:bg-[linear-gradient(135deg,#020617_0%,#0f172a_48%,#111827_100%)] dark:text-white">
-      <aside className={`flex shrink-0 flex-col overflow-hidden border-r border-slate-200 bg-white/85 backdrop-blur-xl dark:border-slate-700 dark:bg-slate-900/90 transition-width duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-72 lg:w-80'}`}>
-        <header className="relative flex-none border-b border-slate-200 px-4 py-4 dark:border-slate-700">
+    <div className="flex h-screen w-full overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#eef2ff_48%,#f8fafc_100%)] text-slate-950)]">
+      <aside className={`flex shrink-0 flex-col overflow-hidden border-r border-slate-200 bg-white/85 backdrop-blur-xl transition-width duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-72 lg:w-80'}`}>
+        <header className="relative flex-none border-b border-slate-200 px-4 py-4">
           <div className="flex flex-col gap-1.5">
 
             <div className="flex min-w-0 items-baseline gap-2">
-              <h2 className="truncate text-lg font-bold text-slate-950 dark:text-white">
+              <h2 className="truncate text-lg font-bold text-slate-950">
                 {currentProject.name}
               </h2>
             </div>
@@ -734,7 +735,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                     }`}
                   >
                     <div className="flex w-full items-center justify-center gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/70 text-slate-500 shadow-sm ring-1 ring-slate-200 transition-colors dark:bg-slate-800/80 dark:text-slate-300 dark:ring-slate-700">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/70 text-slate-500 shadow-sm ring-1 ring-slate-200 transition-colors">
                         <Icon
                           className={`h-5 w-5 transition-colors ${
                             active ? 'text-blue-600' : 'text-slate-500'
@@ -789,7 +790,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                         className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors ${
                           active
                             ? 'bg-blue-600 text-white'
-                            : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300'
+                            : 'bg-slate-100 text-slate-500'
                         }`}
                       >
                         <FolderOpen className="h-5 w-5" />
@@ -800,7 +801,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                           <p className="truncate text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
                             {project.project_key}
                           </p>
-                          <p className="truncate text-sm font-semibold text-slate-950 dark:text-white">
+                          <p className="truncate text-sm font-semibold text-slate-950">
                             {project.project_name}
                           </p>
                           <p className="truncate text-xs text-slate-500">
@@ -830,16 +831,16 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                     setMemberStatus(null);
                     setMemberModalOpen(true);
                   }}
-                  className="flex h-14 w-full items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 text-left transition-all duration-200 hover:border-cyan-200 hover:bg-cyan-50/50 dark:border-slate-700 dark:bg-slate-800/80 dark:hover:bg-slate-700"
+                  className="flex h-14 w-full items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 text-left transition-all duration-200 hover:border-cyan-200 hover:bg-cyan-50/50"
                 >
                   <div className="flex w-full items-center justify-center gap-3">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-cyan-50 text-cyan-600 ring-1 ring-cyan-100 dark:bg-slate-700 dark:text-cyan-300 dark:ring-slate-600">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-cyan-50 text-cyan-600 ring-1 ring-cyan-100">
                       <UserPlus className="h-4 w-4" />
                     </div>
 
                     {!isSidebarCollapsed && (
                       <div className="min-w-0">
-                        <p className="truncate text-sm font-semibold text-slate-950 dark:text-white">
+                        <p className="truncate text-sm font-semibold text-slate-950">
                           Add Members
                         </p>
                         <p className="truncate text-xs text-slate-500">
@@ -852,16 +853,16 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
               ) : null}
               <button
                 onClick={() => navigateTo(currentProject.slug, 'create-project')}
-                className="flex h-14 w-full items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 text-left transition-all duration-200 hover:border-sky-200 hover:bg-sky-50/50 dark:border-slate-700 dark:bg-slate-800/80 dark:hover:bg-slate-700"
+                className="flex h-14 w-full items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 text-left transition-all duration-200 hover:border-sky-200 hover:bg-sky-50/50"
               >
                 <div className="flex w-full items-center justify-center gap-3">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 ring-1 ring-sky-100 dark:bg-slate-700 dark:text-sky-300 dark:ring-slate-600">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 ring-1 ring-sky-100">
                     <FolderPlus className="h-4 w-4" />
                   </div>
 
                   {!isSidebarCollapsed && (
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-semibold text-slate-950 dark:text-white">
+                      <p className="truncate text-sm font-semibold text-slate-950">
                         Create Project
                       </p>
                       <p className="truncate text-xs text-slate-500">
@@ -877,7 +878,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col overflow-auto">
-        <header className="flex h-16 items-center gap-4 border-b border-slate-200 bg-white/80 px-5 backdrop-blur-xl dark:border-slate-700 dark:bg-slate-900/80">
+        <header className="flex h-16 items-center gap-4 border-b border-slate-200 bg-white/80 px-5 backdrop-blur-xl">
           <div className="min-w-0 flex-1">
             <div className="relative mx-auto max-w-2xl">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -886,24 +887,13 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder="Search tasks, docs, and team notes"
-                className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pl-11 pr-24 text-sm text-slate-950 dark:text-white outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10"
+                className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pl-11 pr-24 text-sm text-slate-950 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-slate-200 bg-white px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">
                 Ctrl+K
               </span>
             </div>
           </div>
-
-          <button
-            onClick={toggleTheme}
-            className="rounded-xl border border-slate-200 bg-white p-2 shadow-sm transition hover:bg-slate-100"
-          >
-            {theme === 'light' ? (
-              <Moon className="h-5 w-5 text-slate-700" />
-            ) : (
-              <Sun className="h-5 w-5 text-yellow-500" />
-            )}
-          </button>
 
           <div className="relative">
             <button
@@ -920,18 +910,18 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
-                  className="absolute right-0 top-14 z-50 w-80 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-700 dark:bg-slate-900"
+                  className="absolute right-0 top-14 z-50 w-80 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl"
                 >
-                  <h3 className="mb-3 text-sm font-semibold text-slate-950 dark:text-white">
+                  <h3 className="mb-3 text-sm font-semibold text-slate-950">
                     Notifications
                   </h3>
                   <div className="space-y-3">
                     {notifications.map((item) => (
                       <div
                         key={item.id}
-                        className="rounded-xl border border-slate-100 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-800"
+                        className="rounded-xl border border-slate-100 bg-slate-50 p-3"
                       >
-                        <p className="text-sm font-semibold text-slate-950 dark:text-white">
+                        <p className="text-sm font-semibold text-slate-950">
                           {item.title}
                         </p>
                         <p className="mt-1 text-xs text-slate-500">
@@ -971,9 +961,12 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                   exit={{ opacity: 0, y: 8, scale: 0.98 }}
                   className="absolute right-0 top-14 w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl backdrop-blur-xl"
                 >
-                  <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-slate-100">
-                    <Settings className="h-4 w-4 text-slate-500" />
-                    Settings
+                  <button
+                    onClick={() => navigateTo(currentProject.slug, 'profile')}
+                    className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm hover:bg-slate-100"
+                  >
+                    <User className="h-4 w-4 text-slate-500" />
+                    Profile
                   </button>
 
                   <button
@@ -1019,7 +1012,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.98 }}
               transition={{ duration: 0.2 }}
-              className="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-700 dark:bg-slate-900"
+              className="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl"
               onClick={(event) => event.stopPropagation()}
             >
               <div className="flex items-start justify-between gap-4">
@@ -1027,7 +1020,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                   <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
                     Team Leader Access
                   </p>
-                  <h2 className="mt-2 text-2xl font-bold text-slate-950 dark:text-white">
+                  <h2 className="mt-2 text-2xl font-bold text-slate-950">
                     Add member to project
                   </h2>
                   <p className="mt-1 text-sm text-slate-500">
@@ -1037,7 +1030,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
 
                 <button
                   onClick={() => setMemberModalOpen(false)}
-                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800"
+                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100"
                 >
                   Close
                 </button>
@@ -1053,7 +1046,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                       value={memberForm.employeeId}
                       onChange={(event) => setMemberForm((current) => ({ ...current, employeeId: event.target.value }))}
                       placeholder="EMP-1024"
-                      className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                      className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10"
                     />
                   </div>
 
@@ -1064,7 +1057,7 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                     <select
                       value={memberForm.designation}
                       onChange={(event) => setMemberForm((current) => ({ ...current, designation: event.target.value }))}
-                      className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                      className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-500/10"
                     >
                       <option value="Developer">Developer</option>
                       <option value="Tester">Tester</option>
@@ -1075,11 +1068,11 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
                     Project Name
                   </p>
-                  <p className="mt-2 font-mono text-sm text-slate-700 dark:text-slate-200">
+                  <p className="mt-2 font-mono text-sm text-slate-700">
                     {activeProject?.project_name ?? activeProject?.slug ?? 'No active project selected'}
                   </p>
                 </div>
@@ -1115,7 +1108,6 @@ const Dashboard: React.FC<DashboardProps> = ({ workspace, token, onLogout }) => 
           </motion.div>
         ) : null}
       </AnimatePresence>
-      <FloatingAIBot />
     
     </div>
   );
@@ -1136,7 +1128,7 @@ const StatCard: React.FC<StatCardProps> = ({
   accent,
   progress,
 }) => (
-  <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+  <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
     <div className="flex items-center justify-between gap-3">
       <div>
         <p className="text-sm text-slate-500">{title}</p>
@@ -1172,7 +1164,7 @@ const PlaceholderView: React.FC<PlaceholderViewProps> = ({
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
         {project.projectLabel}
       </p>
-      <h1 className="mt-2 text-3xl font-bold text-slate-950 dark:text-white">
+      <h1 className="mt-2 text-3xl font-bold text-slate-950">
         {project.name} - {title}
       </h1>
       <p className="mt-2 text-sm text-slate-500">{subtitle}</p>
@@ -1181,7 +1173,7 @@ const PlaceholderView: React.FC<PlaceholderViewProps> = ({
     <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
       <p className="text-sm text-slate-500">
         This contextual view is tied to{' '}
-        <span className="font-semibold text-slate-950 dark:text-white">
+        <span className="font-semibold text-slate-950">
           /{project.slug}/{title.toLowerCase().replace(/\s+/g, '-')}
         </span>
         .

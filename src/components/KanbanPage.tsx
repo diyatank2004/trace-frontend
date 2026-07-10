@@ -355,14 +355,14 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
             Kanban Board
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-slate-950 dark:text-white">
+          <h1 className="mt-2 text-3xl font-bold text-slate-950">
             {projectName}
-            <span className="ml-3 text-sm font-medium text-slate-400 dark:text-slate-500">{projectKey}</span>
+            <span className="ml-3 text-sm font-medium text-slate-400">{projectKey}</span>
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-300">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
             Move work through the project workflow using the live board returned by the backend.
           </p>
         </div>
@@ -372,7 +372,7 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
             type="button"
             disabled={isRefreshing}
             onClick={() => void loadBoard({ silent: true })}
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-700"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isRefreshing ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
             Refresh Board
@@ -380,7 +380,7 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
           <button
             type="button"
             onClick={openCreateForm}
-            className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+            className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
           >
             <Plus className="h-4 w-4" />
             Create Task
@@ -396,35 +396,35 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
       </div>
 
       {statusNote ? (
-        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300">
+        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
           {statusNote}
         </div>
       ) : null}
 
       {loadError ? (
-        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700 dark:border-rose-500/20 dark:bg-rose-500/10 dark:text-rose-300">
+        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
           {loadError}
         </div>
       ) : null}
 
       {actionError ? (
-        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700 dark:border-rose-500/20 dark:bg-rose-500/10 dark:text-rose-300">
+        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
           {actionError}
         </div>
       ) : null}
 
-      <section className="relative rounded-3xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+      <section className="relative rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h2 className="text-lg font-semibold text-slate-950 dark:text-white">{board?.name ?? 'Workflow Board'}</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Columns and tasks are rendered from the backend board response.</p>
+            <h2 className="text-lg font-semibold text-slate-950">{board?.name ?? 'Workflow Board'}</h2>
+            <p className="text-sm text-slate-500">Columns and tasks are rendered from the backend board response.</p>
           </div>
           <label className="min-w-56 space-y-2">
             <span className="sr-only">Sprint Filter</span>
             <select
               value={selectedSprintId}
               onChange={(event) => setSelectedSprintId(event.target.value)}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
             >
               <option value="all">All Tasks</option>
               {sprints.map((sprint, index) => (
@@ -440,18 +440,18 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
           {isLoading ? (
             <div className="flex min-h-[28rem] gap-4">
               {loadingColumns.map((item) => (
-                <div key={item} className="w-80 shrink-0 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-                  <div className="h-5 w-36 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
+                <div key={item} className="w-80 shrink-0 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                  <div className="h-5 w-36 animate-pulse rounded bg-slate-200" />
                   <div className="mt-5 space-y-3">
-                    <div className="h-28 animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-700" />
-                    <div className="h-24 animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-700" />
-                    <div className="h-32 animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-700" />
+                    <div className="h-28 animate-pulse rounded-2xl bg-slate-100" />
+                    <div className="h-24 animate-pulse rounded-2xl bg-slate-100" />
+                    <div className="h-32 animate-pulse rounded-2xl bg-slate-100" />
                   </div>
                 </div>
               ))}
             </div>
           ) : filteredColumns.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-6 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-300">
+            <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-6 text-sm text-slate-500">
               No board columns were returned for this project.
             </div>
           ) : (
@@ -489,16 +489,16 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
 
       {isCreateOpen ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 px-4 py-6 backdrop-blur-sm">
-          <div className="w-full max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-700 dark:bg-slate-800">
+          <div className="w-full max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Task Form</p>
-                <h2 className="mt-2 text-2xl font-bold text-slate-950 dark:text-white">Create Task</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Task Form</p>
+                <h2 className="mt-2 text-2xl font-bold text-slate-950">Create Task</h2>
               </div>
               <button
                 type="button"
                 onClick={() => setIsCreateOpen(false)}
-                className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-700"
+                className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
               >
                 Close
               </button>
@@ -506,30 +506,30 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
 
             <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
               <label className="space-y-2 md:col-span-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Title</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Title</span>
                 <input
                   type="text"
                   value={draft.title}
                   onChange={(event) => setDraft((current) => ({ ...current, title: event.target.value }))}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 />
               </label>
 
               <label className="space-y-2 md:col-span-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Description</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Description</span>
                 <textarea
                   value={draft.description}
                   onChange={(event) => setDraft((current) => ({ ...current, description: event.target.value }))}
-                  className="min-h-28 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="min-h-28 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 />
               </label>
 
               <label className="space-y-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Priority</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Priority</span>
                 <select
                   value={draft.priority}
                   onChange={(event) => setDraft((current) => ({ ...current, priority: event.target.value as KanbanPriority }))}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 >
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
@@ -539,21 +539,21 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
               </label>
 
               <label className="space-y-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Assignee ID</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Assignee ID</span>
                 <input
                   type="text"
                   value={draft.assigneeId}
                   onChange={(event) => setDraft((current) => ({ ...current, assigneeId: event.target.value }))}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 />
               </label>
 
               <label className="space-y-2 md:col-span-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Sprint</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Sprint</span>
                 <select
                   value={draft.sprintId}
                   onChange={(event) => setDraft((current) => ({ ...current, sprintId: event.target.value }))}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 >
                   <option value="">No sprint</option>
                   {sprints.map((sprint) => (
@@ -564,7 +564,7 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
                 </select>
               </label>
 
-              <div className="md:col-span-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-xs text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-400">
+              <div className="md:col-span-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-xs text-slate-500">
                 The backend creates new tasks in the first workflow lane for the project board.
               </div>
             </div>
@@ -573,7 +573,7 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
               <button
                 type="button"
                 onClick={() => setIsCreateOpen(false)}
-                className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-700"
+                className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
               >
                 Cancel
               </button>
@@ -581,7 +581,7 @@ export default function KanbanPage({ projectId, projectName, projectKey, current
                 type="button"
                 disabled={isSubmitting}
                 onClick={() => void submitCreateTask()}
-                className="rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                className="rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? 'Creating...' : 'Create Task'}
               </button>
@@ -612,8 +612,8 @@ function BoardMiniMap({ columns, visibleColumnIds, viewport, onSelectColumn }: B
   const viewportWidth = viewport.scrollWidth > 0 ? (viewport.clientWidth / viewport.scrollWidth) * 100 : 100;
 
   return (
-    <div className="pointer-events-auto absolute bottom-6 right-6 z-20 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/95">
-      <div className="relative grid h-14 w-56 gap-1 overflow-hidden rounded-xl bg-slate-100 p-1 dark:bg-slate-800" style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))` }}>
+    <div className="pointer-events-auto absolute bottom-6 right-6 z-20 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-lg backdrop-blur">
+      <div className="relative grid h-14 w-56 gap-1 overflow-hidden rounded-xl bg-slate-100 p-1" style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))` }}>
         <div
           className="pointer-events-none absolute inset-y-1 rounded-lg border-2 border-blue-500 transition-all"
           style={{
@@ -632,8 +632,8 @@ function BoardMiniMap({ columns, visibleColumnIds, viewport, onSelectColumn }: B
               onClick={() => onSelectColumn(index)}
               className={`h-full min-w-0 rounded-md border transition ${
                 isVisible
-                  ? 'border-blue-300 bg-blue-100 dark:border-blue-500/50 dark:bg-blue-500/20'
-                  : 'border-slate-200 bg-white hover:border-slate-300 dark:border-slate-700 dark:bg-slate-700 dark:hover:border-slate-600'
+                  ? 'border-blue-300 bg-blue-100'
+                  : 'border-slate-200 bg-white hover:border-slate-300'
               }`}
             >
               <span className="sr-only">{column.name}</span>
@@ -647,9 +647,9 @@ function BoardMiniMap({ columns, visibleColumnIds, viewport, onSelectColumn }: B
 
 function StatCard({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">{label}</p>
-      <p className="mt-3 text-3xl font-bold text-slate-950 dark:text-white">{value}</p>
+    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">{label}</p>
+      <p className="mt-3 text-3xl font-bold text-slate-950">{value}</p>
     </div>
   );
 }

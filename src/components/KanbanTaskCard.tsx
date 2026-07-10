@@ -12,14 +12,14 @@ interface KanbanTaskCardProps {
 
 const getPriorityClass = (priority: KanbanTask['priority']) => {
   if (priority === 'High' || priority === 'Urgent') {
-    return 'bg-rose-500/10 text-rose-600 dark:text-rose-400';
+    return 'bg-rose-500/10 text-rose-600';
   }
 
   if (priority === 'Medium') {
-    return 'bg-blue-500/10 text-blue-600 dark:text-blue-400';
+    return 'bg-blue-500/10 text-blue-600';
   }
 
-  return 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300';
+  return 'bg-slate-100 text-slate-600';
 };
 
 const formatCreatedAt = (value: string) => {
@@ -56,12 +56,12 @@ function KanbanTaskCard({ task, columnId, onOpen, isOverlay = false }: KanbanTas
       {...sortable.attributes}
       {...sortable.listeners}
       onClick={() => onOpen(task)}
-      className={`w-full rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:border-blue-200 hover:bg-blue-50/50 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-blue-500/30 dark:hover:bg-blue-500/10 ${
+      className={`w-full rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:border-blue-200 hover:bg-blue-50/50 ${
         sortable.isDragging ? 'opacity-40' : ''
       } ${isOverlay ? 'shadow-2xl' : ''}`}
     >
       <div className="flex items-start justify-between gap-3">
-        <p className="truncate font-mono text-xs font-semibold uppercase tracking-[0.16em] text-blue-600 dark:text-blue-400">
+        <p className="truncate font-mono text-xs font-semibold uppercase tracking-[0.16em] text-blue-600">
           {task.ticketKey}
         </p>
         <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase ${getPriorityClass(task.priority)}`}>
@@ -69,17 +69,17 @@ function KanbanTaskCard({ task, columnId, onOpen, isOverlay = false }: KanbanTas
         </span>
       </div>
 
-      <h3 className="mt-3 line-clamp-2 text-sm font-semibold leading-5 text-slate-950 dark:text-white">
+      <h3 className="mt-3 line-clamp-2 text-sm font-semibold leading-5 text-slate-950">
         {task.title}
       </h3>
 
-      <div className="mt-4 grid grid-cols-1 gap-1 text-xs text-slate-500 dark:text-slate-400">
+      <div className="mt-4 grid grid-cols-1 gap-1 text-xs text-slate-500">
         <p className="truncate">
-          <span className="font-semibold text-slate-700 dark:text-slate-200">Assignee:</span>{' '}
+          <span className="font-semibold text-slate-700">Assignee:</span>{' '}
           {task.assigneeId || 'Unassigned'}
         </p>
         <p className="truncate">
-          <span className="font-semibold text-slate-700 dark:text-slate-200">Created:</span>{' '}
+          <span className="font-semibold text-slate-700">Created:</span>{' '}
           {formatCreatedAt(task.createdAt)}
         </p>
       </div>

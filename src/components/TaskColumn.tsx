@@ -110,9 +110,9 @@ setDrawerOpen,
   return (
     <div
       ref={setNodeRef}
-className="min-w-[320px] rounded-3xl border border-slate-300 bg-white p-5 shadow-2xl dark:border-slate-800 dark:bg-[#0f172a]"    >
+className="min-w-[320px] rounded-3xl border border-slate-300 bg-white p-5 shadow-2xl"    >
       <div className="mb-5 flex items-center justify-between">
-        <h2 className="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-200">
+        <h2 className="text-sm font-bold uppercase tracking-wide text-slate-900">
           {column.label}
         </h2>
 
@@ -148,7 +148,7 @@ setDrawerOpen={setDrawerOpen}
 />
             ))
           ) : (
-            <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-100 p-5 text-center text-xs text-slate-500 dark:border-slate-700 dark:bg-[#111827]">
+            <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-100 p-5 text-center text-xs text-slate-500">
               No tasks available
             </div>
           )}

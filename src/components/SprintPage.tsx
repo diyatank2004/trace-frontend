@@ -55,30 +55,30 @@ const mapSprintItem = (sprint: SprintRecord, taskCount: number): SprintItem => (
 
 const getBadgeClass = (status: SprintStatus) => {
   if (status === 'Active') {
-    return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400';
+    return 'bg-emerald-100 text-emerald-700';
   }
 
   if (status === 'Completed') {
-    return 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200';
+    return 'bg-slate-200 text-slate-700';
   }
 
-  return 'bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400';
+  return 'bg-amber-100 text-amber-700';
 };
 
 const getActionButtonClass = (tone: 'primary' | 'success' | 'danger' | 'ghost') => {
   if (tone === 'primary') {
-    return 'bg-blue-500/10 text-blue-600 hover:bg-blue-500/20 dark:text-blue-400';
+    return 'bg-blue-500/10 text-blue-600 hover:bg-blue-500/20';
   }
 
   if (tone === 'success') {
-    return 'bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20 dark:text-emerald-400';
+    return 'bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20';
   }
 
   if (tone === 'danger') {
-    return 'bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 dark:text-rose-400';
+    return 'bg-rose-500/10 text-rose-600 hover:bg-rose-500/20';
   }
 
-  return 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600';
+  return 'bg-slate-100 text-slate-700 hover:bg-slate-200';
 };
 
 export default function SprintPage({ projectId, projectName, projectKey, projectSlug, onNavigate }: SprintPageProps) {
@@ -293,14 +293,14 @@ export default function SprintPage({ projectId, projectName, projectKey, project
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
             Sprint Management
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-slate-950 dark:text-white">
+          <h1 className="mt-2 text-3xl font-bold text-slate-950">
             {projectName}
-            <span className="ml-3 text-sm font-medium text-slate-400 dark:text-slate-500">{projectKey}</span>
+            <span className="ml-3 text-sm font-medium text-slate-400">{projectKey}</span>
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-300">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
             Manage sprint records for this project, then jump to backlog or kanban when you need the adjacent workflow.
           </p>
         </div>
@@ -309,7 +309,7 @@ export default function SprintPage({ projectId, projectName, projectKey, project
           <button
             type="button"
             onClick={() => onNavigate('backlog')}
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-700"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
           >
             <Clock3 className="h-4 w-4" />
             Open Backlog
@@ -317,7 +317,7 @@ export default function SprintPage({ projectId, projectName, projectKey, project
           <button
             type="button"
             onClick={() => onNavigate('kanban')}
-            className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-100 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300 dark:hover:bg-blue-500/20"
+            className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-100"
           >
             <FolderKanban className="h-4 w-4" />
             Open Kanban Board
@@ -325,7 +325,7 @@ export default function SprintPage({ projectId, projectName, projectKey, project
           <button
             type="button"
             onClick={openCreateForm}
-            className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+            className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
           >
             <Plus className="h-4 w-4" />
             Create Sprint
@@ -334,54 +334,54 @@ export default function SprintPage({ projectId, projectName, projectKey, project
       </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Total Sprints</p>
-          <p className="mt-3 text-3xl font-bold text-slate-950 dark:text-white">{metrics.total}</p>
+        <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Total Sprints</p>
+          <p className="mt-3 text-3xl font-bold text-slate-950">{metrics.total}</p>
         </div>
         {statusBreakdown.map((item) => (
-          <div key={item.label} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">{item.label}</p>
-            <p className="mt-3 text-3xl font-bold text-slate-950 dark:text-white">{item.value}</p>
+          <div key={item.label} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">{item.label}</p>
+            <p className="mt-3 text-3xl font-bold text-slate-950">{item.value}</p>
           </div>
         ))}
       </div>
 
       {statusNote ? (
-        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300">
+        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
           {statusNote}
         </div>
       ) : null}
 
       {loadError ? (
-        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700 dark:border-rose-500/20 dark:bg-rose-500/10 dark:text-rose-300">
+        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
           {loadError}
         </div>
       ) : null}
 
       {actionError ? (
-        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700 dark:border-rose-500/20 dark:bg-rose-500/10 dark:text-rose-300">
+        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
           {actionError}
         </div>
       ) : null}
 
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-        <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+        <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h2 className="text-lg font-semibold text-slate-950 dark:text-white">Sprint List</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Real sprint records returned by the backend.</p>
+              <h2 className="text-lg font-semibold text-slate-950">Sprint List</h2>
+              <p className="text-sm text-slate-500">Real sprint records returned by the backend.</p>
             </div>
-            <div className="text-xs font-medium text-slate-400 dark:text-slate-500">Project slug: /{projectSlug}</div>
+            <div className="text-xs font-medium text-slate-400">Project slug: /{projectSlug}</div>
           </div>
 
           <div className="mt-5 space-y-3">
             {isLoading ? (
-              <div className="flex items-center gap-3 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-5 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-300">
+              <div className="flex items-center gap-3 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-5 text-sm text-slate-500">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 Loading sprint records...
               </div>
             ) : sprints.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-6 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-300">
+              <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-6 text-sm text-slate-500">
                 No sprint records were returned for this project. Create the first sprint to begin planning.
               </div>
             ) : (
@@ -397,12 +397,12 @@ export default function SprintPage({ projectId, projectName, projectKey, project
                 return (
                   <article
                     key={sprint.id}
-                    className={`rounded-3xl border p-5 shadow-sm transition ${isSelected ? 'border-blue-200 bg-blue-50/60 dark:border-blue-500/20 dark:bg-blue-500/10' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800'}`}
+                    className={`rounded-3xl border p-5 shadow-sm transition ${isSelected ? 'border-blue-200 bg-blue-50/60' : 'border-slate-200 bg-white'}`}
                   >
                     <div className="flex flex-wrap items-start justify-between gap-4">
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-3">
-                          <h3 className="truncate text-base font-semibold text-slate-950 dark:text-white">{sprint.name}</h3>
+                          <h3 className="truncate text-base font-semibold text-slate-950">{sprint.name}</h3>
                           {sprint.statusLabel === 'Active' ? (
                             <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.18)]" />
                           ) : null}
@@ -410,16 +410,16 @@ export default function SprintPage({ projectId, projectName, projectKey, project
                             {sprint.statusLabel}
                           </span>
                         </div>
-                        <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                        <p className="mt-2 text-sm leading-6 text-slate-600">
                           {sprint.goal || 'No sprint goal returned by the backend.'}
                         </p>
-                        <div className="mt-4 grid grid-cols-1 gap-2 text-sm text-slate-500 dark:text-slate-400 sm:grid-cols-2">
-                          <p><span className="font-semibold text-slate-700 dark:text-slate-200">Start:</span> {startDateLabel ?? 'Not available'}</p>
-                          <p><span className="font-semibold text-slate-700 dark:text-slate-200">End:</span> {endDateLabel ?? 'Not available'}</p>
-                          <p><span className="font-semibold text-slate-700 dark:text-slate-200">Task Count:</span> {sprint.taskCount}</p>
-                          <p><span className="font-semibold text-slate-700 dark:text-slate-200">Days Remaining:</span> {daysRemaining === null ? 'Not available' : daysRemaining < 0 ? `Overdue by ${Math.abs(daysRemaining)} day${Math.abs(daysRemaining) === 1 ? '' : 's'}` : `${daysRemaining} day${daysRemaining === 1 ? '' : 's'}`}</p>
-                          <p><span className="font-semibold text-slate-700 dark:text-slate-200">Created At:</span> {sprintDisplayDateTime(sprint.createdAt) ?? 'Not available'}</p>
-                          <p><span className="font-semibold text-slate-700 dark:text-slate-200">Updated At:</span> {sprintDisplayDateTime(sprint.updatedAt) ?? 'Not available'}</p>
+                        <div className="mt-4 grid grid-cols-1 gap-2 text-sm text-slate-500 sm:grid-cols-2">
+                          <p><span className="font-semibold text-slate-700">Start:</span> {startDateLabel ?? 'Not available'}</p>
+                          <p><span className="font-semibold text-slate-700">End:</span> {endDateLabel ?? 'Not available'}</p>
+                          <p><span className="font-semibold text-slate-700">Task Count:</span> {sprint.taskCount}</p>
+                          <p><span className="font-semibold text-slate-700">Days Remaining:</span> {daysRemaining === null ? 'Not available' : daysRemaining < 0 ? `Overdue by ${Math.abs(daysRemaining)} day${Math.abs(daysRemaining) === 1 ? '' : 's'}` : `${daysRemaining} day${daysRemaining === 1 ? '' : 's'}`}</p>
+                          <p><span className="font-semibold text-slate-700">Created At:</span> {sprintDisplayDateTime(sprint.createdAt) ?? 'Not available'}</p>
+                          <p><span className="font-semibold text-slate-700">Updated At:</span> {sprintDisplayDateTime(sprint.updatedAt) ?? 'Not available'}</p>
                         </div>
                       </div>
 
@@ -474,11 +474,11 @@ export default function SprintPage({ projectId, projectName, projectKey, project
         </section>
 
         <section className="space-y-6">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <h2 className="text-lg font-semibold text-slate-950 dark:text-white">Sprint Details</h2>
-                <p className="text-sm text-slate-500 dark:text-slate-400">Selected sprint metadata from the backend.</p>
+                <h2 className="text-lg font-semibold text-slate-950">Sprint Details</h2>
+                <p className="text-sm text-slate-500">Selected sprint metadata from the backend.</p>
               </div>
               <Calendar className="h-5 w-5 text-sky-500" />
             </div>
@@ -486,8 +486,8 @@ export default function SprintPage({ projectId, projectName, projectKey, project
             {selectedSprint ? (
               <div className="mt-5 space-y-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Sprint Name</p>
-                  <h3 className="mt-2 text-2xl font-bold text-slate-950 dark:text-white">{selectedSprint.name}</h3>
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Sprint Name</p>
+                  <h3 className="mt-2 text-2xl font-bold text-slate-950">{selectedSprint.name}</h3>
                 </div>
 
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -501,20 +501,20 @@ export default function SprintPage({ projectId, projectName, projectKey, project
                   <DetailRow label="Updated At" value={sprintDisplayDateTime(selectedSprint.updatedAt) ?? 'Not available'} />
                 </div>
 
-                <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-300">
+                <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
                   Completed tasks and remaining tasks are not available from the current sprint API response. If the backend adds those fields later, this panel can surface them directly without changing the page layout.
                 </div>
               </div>
             ) : (
-              <div className="mt-5 rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-300">
+              <div className="mt-5 rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
                 No sprint selected. Choose a sprint from the list to view its details.
               </div>
             )}
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
-            <h2 className="text-lg font-semibold text-slate-950 dark:text-white">Backend Limitations</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h2 className="text-lg font-semibold text-slate-950">Backend Limitations</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-500">
               The current backend sprint model does not expose description, created by, archive, or delete endpoints. The page therefore renders only the real fields returned by the existing API and omits unsupported actions instead of fabricating values.
             </p>
           </div>
@@ -523,88 +523,88 @@ export default function SprintPage({ projectId, projectName, projectKey, project
 
       {editorOpen ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 px-4 py-6 backdrop-blur-sm">
-          <div className="w-full max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-700 dark:bg-slate-800">
+          <div className="w-full max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Sprint Form</p>
-                <h2 className="mt-2 text-2xl font-bold text-slate-950 dark:text-white">{editorTitle}</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Sprint Form</p>
+                <h2 className="mt-2 text-2xl font-bold text-slate-950">{editorTitle}</h2>
               </div>
               <button
                 type="button"
                 onClick={() => setEditorOpen(false)}
-                className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-700"
+                className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
               >
                 Close
               </button>
             </div>
 
             {formError ? (
-              <div className="mt-4 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700 dark:border-rose-500/20 dark:bg-rose-500/10 dark:text-rose-300">
+              <div className="mt-4 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
                 {formError}
               </div>
             ) : null}
 
             <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
               <label className="space-y-2 md:col-span-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Sprint Name</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Sprint Name</span>
                 <input
                   type="text"
                   value={draft.name}
                   onChange={(event) => setDraft((current) => ({ ...current, name: event.target.value }))}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 />
               </label>
 
               <label className="space-y-2 md:col-span-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Goal</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Goal</span>
                 <input
                   type="text"
                   value={draft.goal}
                   onChange={(event) => setDraft((current) => ({ ...current, goal: event.target.value }))}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 />
               </label>
 
               <label className="space-y-2 md:col-span-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Description</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Description</span>
                 <textarea
                   value={draft.description}
                   onChange={(event) => setDraft((current) => ({ ...current, description: event.target.value }))}
-                  className="min-h-28 w-full rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-500 outline-none dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-400"
+                  className="min-h-28 w-full rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-500 outline-none"
                   placeholder="The backend does not persist sprint descriptions yet."
                 />
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="text-xs text-slate-500">
                   This field is shown to match the requested layout, but the current sprint API does not store or return it.
                 </p>
               </label>
 
               <label className="space-y-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Start Date</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Start Date</span>
                 <input
                   type="date"
                   value={draft.startDate}
                   onChange={(event) => setDraft((current) => ({ ...current, startDate: event.target.value }))}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:scheme-dark"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 />
               </label>
 
               <label className="space-y-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">End Date</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">End Date</span>
                 <input
                   type="date"
                   value={draft.endDate}
                   onChange={(event) => setDraft((current) => ({ ...current, endDate: event.target.value }))}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:scheme-dark"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                 />
               </label>
 
               {editorMode === 'edit' ? (
                 <label className="space-y-2 md:col-span-2">
-                  <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Status</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Status</span>
                   <select
                     value={draft.status}
                     onChange={(event) => setDraft((current) => ({ ...current, status: event.target.value as SprintStatus }))}
-                    className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
                   >
                     <option value="Planned">Planned</option>
                     <option value="Active">Active</option>
@@ -612,7 +612,7 @@ export default function SprintPage({ projectId, projectName, projectKey, project
                   </select>
                 </label>
               ) : (
-                <div className="md:col-span-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-xs text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-400">
+                <div className="md:col-span-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-xs text-slate-500">
                   The backend create endpoint defaults new sprints to Planned/Future status.
                 </div>
               )}
@@ -622,7 +622,7 @@ export default function SprintPage({ projectId, projectName, projectKey, project
               <button
                 type="button"
                 onClick={() => setEditorOpen(false)}
-                className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-700"
+                className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
               >
                 Cancel
               </button>
@@ -630,7 +630,7 @@ export default function SprintPage({ projectId, projectName, projectKey, project
                 type="button"
                 disabled={isSubmitting}
                 onClick={() => void submitForm()}
-                className="rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                className="rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {submitLabel}
               </button>
@@ -644,9 +644,9 @@ export default function SprintPage({ projectId, projectName, projectKey, project
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-700 dark:bg-slate-900/40">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">{label}</p>
-      <p className="mt-2 text-sm font-medium leading-6 text-slate-900 dark:text-white">{value}</p>
+    <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">{label}</p>
+      <p className="mt-2 text-sm font-medium leading-6 text-slate-900">{value}</p>
     </div>
   );
 }

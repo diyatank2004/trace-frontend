@@ -1,11 +1,11 @@
-import { Calendar, CheckCircle2, Clock3, FolderKanban, MessageSquareText, Sparkles, Users } from 'lucide-react';
+import { Calendar, CheckCircle2, Clock3, FolderKanban, Sparkles, Users } from 'lucide-react';
 
 export type WorkspaceView =
   | 'dashboard'
   | 'kanban'
   | 'backlog'
-  | 'chat'
   | 'sprint'
+  | 'profile'
   | 'create-project';
 
 export type ProjectSlug = string;
@@ -88,7 +88,7 @@ export const NAV_ITEMS: NavItem[] = [
   { id: 'dashboard', label: 'Dashboard', icon: CheckCircle2, hint: 'Project overview' },
   { id: 'kanban', label: 'Kanban Board', icon: FolderKanban, hint: 'Track flow' },
   { id: 'backlog', label: 'Backlog', icon: Clock3, hint: 'Plan future work' },
-  { id: 'chat', label: 'Team Chat', icon: MessageSquareText, hint: 'Team info & discussion' },
+  
   {
   id: 'sprint',
   label: 'Sprints',
@@ -113,7 +113,7 @@ export const parseWorkspacePath = (pathname: string): { projectSlug: ProjectSlug
   const segments = pathname.split('/').filter(Boolean);
   const projectSlug = (segments[0] || 'tej') as ProjectSlug;
 
-const validViews = ['dashboard', 'kanban', 'backlog', 'chat', 'sprint', 'create-project'];
+const validViews = ['dashboard', 'kanban', 'backlog', 'sprint', 'profile', 'create-project'];
 
 const view = validViews.includes(segments[1])
   ? (segments[1] as WorkspaceView)

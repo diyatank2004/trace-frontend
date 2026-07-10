@@ -232,19 +232,19 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 to-indigo-50 p-4 md:p-8 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 to-indigo-50 p-4 md:p-8 text-slate-900">
       <div className="mx-auto max-w-7xl space-y-6">
         
         {/* HEADER PANEL CARD */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between rounded-3xl bg-white p-6 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between rounded-3xl bg-white p-6 shadow-sm border border-slate-100 gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
               Admin Configuration Dashboard
             </p>
-            <h1 className="mt-1 text-3xl font-bold text-slate-950 dark:text-white">
+            <h1 className="mt-1 text-3xl font-bold text-slate-950">
               Welcome back, {fullName}
             </h1>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-sm text-slate-500 mt-1">
               Direct access index management tracking for global project instances and registered employees rows.
             </p>
           </div>
@@ -282,7 +282,7 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
         </div>
 
         {/* COMPONENT TAB STRIP SELECTION CONTROLS */}
-        <div className="flex border-b border-slate-200 dark:border-slate-800 gap-6 text-sm font-medium">
+        <div className="flex border-b border-slate-200 gap-6 text-sm font-medium">
           <button 
             onClick={() => { setActiveTab('projects'); setSelectedEmployee(null); }}
             className={`pb-3 transition flex items-center gap-2 relative ${activeTab === 'projects' ? 'text-blue-500 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
@@ -314,10 +314,10 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800"
+                  className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100"
                 >
                   <div className="mb-4">
-                    <h2 className="text-xl font-bold text-slate-950 dark:text-white">Global Active Projects</h2>
+                    <h2 className="text-xl font-bold text-slate-950">Global Active Projects</h2>
                     <p className="text-xs text-slate-400 mt-0.5">Click any active project tile to verify employee team rows and specific role mappings.</p>
                   </div>
                   
@@ -332,21 +332,21 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                           className={`flex flex-col justify-between rounded-2xl border p-4 transition cursor-pointer group relative ${
                             selectedProject?.id === project.id 
                               ? 'bg-blue-500/5 border-blue-500/40 shadow-sm' 
-                              : 'bg-slate-50 border-slate-100 dark:bg-slate-800/40 dark:border-slate-800 hover:border-blue-500/30'
+                              : 'bg-slate-50 border-slate-100 hover:border-blue-500/30'
                           }`}
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div>
-                              <h3 className="font-bold text-slate-950 dark:text-white flex items-center gap-2 text-base">
+                              <h3 className="font-bold text-slate-950 flex items-center gap-2 text-base">
                                 {project.name}
-                                <span className="text-[10px] bg-blue-100 text-blue-700 font-mono px-2 py-0.5 rounded dark:bg-blue-950 dark:text-blue-400 font-bold">{project.project_key}</span>
+                                <span className="text-[10px] bg-blue-100 text-blue-700 font-mono px-2 py-0.5 rounded font-bold">{project.project_key}</span>
                               </h3>
                               <p className="text-[10px] font-mono text-slate-400 mt-1">ID: {project.id}</p>
                             </div>
                             
                             <button
                               onClick={(e) => handleForceDeleteProject(project.id, project.name, e)}
-                              className="p-2 text-red-500 rounded-xl bg-red-50 dark:bg-red-950/30 hover:bg-red-600 hover:text-white transition opacity-60 group-hover:opacity-100"
+                              className="p-2 text-red-500 rounded-xl bg-red-50 hover:bg-red-600 hover:text-white transition opacity-60 group-hover:opacity-100"
                             >
                               <Trash2 className="h-4 w-4" />
                             </button>
@@ -368,10 +368,10 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800"
+                  className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100"
                 >
                   <div className="mb-4">
-                    <h2 className="text-xl font-bold text-slate-950 dark:text-white">Active Employee Registry</h2>
+                    <h2 className="text-xl font-bold text-slate-950">Active Employee Registry</h2>
                     <p className="text-xs text-slate-400 mt-0.5">Select a staff row entry to display specific profile roles, tags, and credential information metadata records.</p>
                   </div>
 
@@ -386,17 +386,17 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                           className={`flex items-center justify-between rounded-2xl border p-4 transition cursor-pointer group ${
                             selectedEmployee?.employee_id === user.employee_id
                               ? 'bg-blue-500/5 border-blue-500/40 shadow-sm'
-                              : 'bg-slate-50 border-slate-100 dark:bg-slate-800/40 dark:border-slate-800 hover:border-slate-700'
+                              : 'bg-slate-50 border-slate-100 hover:border-slate-700'
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-bold text-sm text-blue-500 border dark:border-slate-700">
+                            <div className="h-10 w-10 rounded-xl bg-slate-200 flex items-center justify-center font-bold text-sm text-blue-500 border">
                               {user.full_name.charAt(0)}
                             </div>
                             <div>
-                              <h3 className="font-semibold text-slate-950 dark:text-white flex items-center gap-2 text-sm">
+                              <h3 className="font-semibold text-slate-950 flex items-center gap-2 text-sm">
                                 {user.full_name}
-                                <span className="text-[10px] font-mono bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 px-1.5 py-0.5 rounded">ID: {user.employee_id}</span>
+                                <span className="text-[10px] font-mono bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded">ID: {user.employee_id}</span>
                               </h3>
                               <p className="text-xs text-slate-500">{user.email}</p>
                             </div>
@@ -404,7 +404,7 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
 
                           <button
                             onClick={(e) => handleForceDeleteUser(user.employee_id, e)}
-                            className="rounded-xl px-3 py-1.5 text-xs font-semibold bg-red-50 text-red-600 dark:bg-red-950/20 dark:text-red-400 hover:bg-red-600 hover:text-white transition duration-200"
+                            className="rounded-xl px-3 py-1.5 text-xs font-semibold bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition duration-200"
                           >
                             Delete
                           </button>
@@ -427,11 +427,11 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
-                  className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800 space-y-4"
+                  className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 space-y-4"
                 >
-                  <div className="border-b dark:border-slate-800 pb-3">
+                  <div className="border-b pb-3">
                     <span className="text-[10px] font-bold text-blue-500 tracking-wider uppercase">Project Members</span>
-                    <h2 className="text-xl font-bold mt-0.5 text-slate-950 dark:text-white">{selectedProject.name}</h2>
+                    <h2 className="text-xl font-bold mt-0.5 text-slate-950">{selectedProject.name}</h2>
                     <p className="text-xs font-mono text-slate-400 truncate">ID: {selectedProject.id}</p>
                   </div>
 
@@ -445,16 +445,16 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                   ) : (
                     <div className="space-y-3">
                       {projectMembers.map((member) => (
-                        <div key={member.employee_id} className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/30 border dark:border-slate-800/80 flex items-center justify-between gap-2">
+                        <div key={member.employee_id} className="p-3 rounded-2xl bg-slate-50 border flex items-center justify-between gap-2">
                           <div>
-                            <p className="text-sm font-bold text-slate-950 dark:text-white">{member.full_name}</p>
+                            <p className="text-sm font-bold text-slate-950">{member.full_name}</p>
                             <p className="text-xs text-slate-400">{member.designation}</p>
                           </div>
                           
                           <span className={`text-[10px] font-bold px-2 py-1 rounded-lg ${
                             member.project_role === 'Team Leader'
-                              ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-400 border border-amber-500/20' 
-                              : 'bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-400 border border-blue-500/10'
+                              ? 'bg-amber-100 text-amber-800 border border-amber-500/20' 
+                              : 'bg-blue-100 text-blue-800 border border-blue-500/10'
                           }`}>
                             {member.project_role}
                           </span>
@@ -471,14 +471,14 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
-                  className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800 space-y-4"
+                  className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 space-y-4"
                 >
-                  <div className="border-b dark:border-slate-800 pb-4 text-center">
+                  <div className="border-b pb-4 text-center">
                     <div className="h-16 w-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-black text-2xl mx-auto mb-2">
                       {selectedEmployee.full_name.charAt(0)}
                     </div>
-                    <h2 className="text-lg font-bold text-slate-950 dark:text-white">{selectedEmployee.full_name}</h2>
-                    <span className="text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-400 px-2 py-0.5 rounded">Corporate ID: {selectedEmployee.employee_id}</span>
+                    <h2 className="text-lg font-bold text-slate-950">{selectedEmployee.full_name}</h2>
+                    <span className="text-[10px] font-mono bg-slate-100 text-slate-400 px-2 py-0.5 rounded">Corporate ID: {selectedEmployee.employee_id}</span>
                   </div>
 
                   {isEmployeeLoading ? (
@@ -488,28 +488,28 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                     </div>
                   ) : (
                     <div className="space-y-4 text-xs">
-                      <div className="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/40">
+                      <div className="flex items-center gap-3 p-2 rounded-xl bg-slate-50">
                         <Mail className="h-4 w-4 text-slate-400 shrink-0" />
                         <div className="truncate">
                           <p className="text-[10px] font-semibold text-slate-400 uppercase">Primary Email Address</p>
-                          <p className="font-mono text-slate-950 dark:text-slate-200 truncate">{selectedEmployee.email}</p>
+                          <p className="font-mono text-slate-950 truncate">{selectedEmployee.email}</p>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/40">
+                      <div className="flex items-center gap-3 p-2 rounded-xl bg-slate-50">
                         <Briefcase className="h-4 w-4 text-slate-400 shrink-0" />
                         <div>
                           <p className="text-[10px] font-semibold text-slate-400 uppercase">Designation & Department Context</p>
-                          <p className="font-bold text-slate-950 dark:text-slate-200">{selectedEmployee.designation || 'Software Architect'}</p>
+                          <p className="font-bold text-slate-950">{selectedEmployee.designation || 'Software Architect'}</p>
                           <p className="text-[10px] text-slate-400 mt-0.5">{selectedEmployee.department || 'Product Development Infrastructure'}</p>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/40">
+                      <div className="flex items-center gap-3 p-2 rounded-xl bg-slate-50">
                         <Calendar className="h-4 w-4 text-slate-400 shrink-0" />
                         <div>
                           <p className="text-[10px] font-semibold text-slate-400 uppercase">Roster Registration Creation Timestamp</p>
-                          <p className="font-mono text-slate-950 dark:text-slate-200">
+                          <p className="font-mono text-slate-950">
                             {selectedEmployee.created_at ? new Date(selectedEmployee.created_at).toLocaleDateString(undefined, { dateStyle: 'medium' }) : "N/A"}
                           </p>
                         </div>
@@ -521,7 +521,7 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                         </p>
                         <div className="flex flex-wrap gap-1">
                           {(selectedEmployee.skills || ['Python', 'FastAPI', 'React', 'TypeScript', 'PostgreSQL']).map((skill, idx) => (
-                            <span key={idx} className="text-[10px] font-medium bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-2 py-0.5 rounded-md border dark:border-slate-700/60">
+                            <span key={idx} className="text-[10px] font-medium bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md border">
                               {skill}
                             </span>
                           ))}
@@ -537,10 +537,10 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
                 <motion.div 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="rounded-3xl border border-dashed border-slate-200 dark:border-slate-800 p-8 text-center text-slate-400 flex flex-col items-center justify-center gap-2 py-24 bg-white/20 dark:bg-slate-900/10"
+                  className="rounded-3xl border border-dashed border-slate-200 p-8 text-center text-slate-400 flex flex-col items-center justify-center gap-2 py-24 bg-white/20"
                 >
-                  <Shield className="h-8 w-8 text-slate-300 dark:text-slate-700" />
-                  <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-1">No Active Selection Context</h3>
+                  <Shield className="h-8 w-8 text-slate-300" />
+                  <h3 className="text-sm font-semibold text-slate-700 mt-1">No Active Selection Context</h3>
                   <p className="text-xs max-w-[200px] mx-auto leading-relaxed">
                     Click on an entry tile layout row from the left navigation index directory to open configuration details subview tables.
                   </p>
@@ -556,36 +556,36 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
       {/* SWAP AGILITY TEAM LEADERSHIP FORM REGISTRY BLOCK (MODAL OVERLAY LAYERS) */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl dark:bg-slate-900 border dark:border-slate-800 space-y-4">
-            <div className="flex justify-between items-center border-b dark:border-slate-800 pb-2">
-              <h3 className="text-xl font-bold flex items-center gap-2 text-slate-950 dark:text-white"><UserCheck className="text-blue-500" /> Change Project Leader</h3>
+          <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl border space-y-4">
+            <div className="flex justify-between items-center border-b pb-2">
+              <h3 className="text-xl font-bold flex items-center gap-2 text-slate-950"><UserCheck className="text-blue-500" /> Change Project Leader</h3>
               <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-sm font-bold">✕</button>
             </div>
 
             <form onSubmit={handleTransferLeadershipSubmit} className="space-y-4">
               <div className="flex flex-col gap-1">
-                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Target Project Context Workspace</span>
+                <span className="text-xs font-semibold text-slate-600">Target Project Context Workspace</span>
                 <select 
                   required 
                   value={leadFormData.projectId} 
                   onChange={(e) => setLeadFormData({ ...leadFormData, projectId: e.target.value })}
-                  className="w-full rounded-xl border p-2.5 text-sm dark:bg-slate-800 dark:border-slate-700 text-slate-900 dark:text-white bg-transparent"
+                  className="w-full rounded-xl border p-2.5 text-sm text-slate-900 bg-transparent"
                 >
-                  <option value="" className="dark:bg-slate-900">-- Choose Active Project --</option>
+                  <option value="">-- Choose Active Project --</option>
                   {stats?.projects_list?.map(p => (
-                    <option key={p.id} value={p.id} className="dark:bg-slate-900">{p.name} [{p.project_key}]</option>
+                    <option key={p.id} value={p.id}>{p.name} [{p.project_key}]</option>
                   ))}
                 </select>
               </div>
 
               <div className="flex flex-col gap-1">
-                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Current Leader ID</span>
-                <input required type="text" value={leadFormData.oldLeaderId} onChange={(e) => setLeadFormData({ ...leadFormData, oldLeaderId: e.target.value })} placeholder="e.g. EMP001" className="w-full rounded-xl border p-2.5 text-sm dark:bg-slate-800 dark:border-slate-700 text-slate-900 dark:text-white bg-transparent" />
+                <span className="text-xs font-semibold text-slate-600">Current Leader ID</span>
+                <input required type="text" value={leadFormData.oldLeaderId} onChange={(e) => setLeadFormData({ ...leadFormData, oldLeaderId: e.target.value })} placeholder="e.g. EMP001" className="w-full rounded-xl border p-2.5 text-sm text-slate-900 bg-transparent" />
               </div>
 
               <div className="flex flex-col gap-1">
-                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">New Leader Employee ID</span>
-                <input required type="text" value={leadFormData.newLeaderId} onChange={(e) => setLeadFormData({ ...leadFormData, newLeaderId: e.target.value })} placeholder="e.g. EMP002" className="w-full rounded-xl border p-2.5 text-sm dark:bg-slate-800 dark:border-slate-700 text-slate-900 dark:text-white bg-transparent" />
+                <span className="text-xs font-semibold text-slate-600">New Leader Employee ID</span>
+                <input required type="text" value={leadFormData.newLeaderId} onChange={(e) => setLeadFormData({ ...leadFormData, newLeaderId: e.target.value })} placeholder="e.g. EMP002" className="w-full rounded-xl border p-2.5 text-sm text-slate-900 bg-transparent" />
               </div>
 
               <button type="submit" className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition text-sm shadow-md">
@@ -601,12 +601,12 @@ export default function AdminDashboard({ fullName, onLogout }: Props) {
 
 function StatCard({ title, value, icon }: { title: string; value: string; icon: React.ReactNode }) {
   return (
-    <div className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 dark:bg-slate-900 dark:border-slate-800 flex items-center justify-between">
+    <div className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 flex items-center justify-between">
       <div>
-        <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{title}</p>
-        <h2 className="mt-2 text-3xl font-extrabold text-blue-600 dark:text-blue-400">{value}</h2>
+        <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{title}</p>
+        <h2 className="mt-2 text-3xl font-extrabold text-blue-600">{value}</h2>
       </div>
-      <div className="text-blue-500 bg-blue-50 p-3 rounded-2xl dark:bg-slate-800 dark:text-blue-400 shrink-0">
+      <div className="text-blue-500 bg-blue-50 p-3 rounded-2xl shrink-0">
         {icon}
       </div>
     </div>

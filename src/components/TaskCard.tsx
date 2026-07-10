@@ -115,7 +115,7 @@ onPointerUp={(e) => {
   setDrawerOpen(true);
 }}
     
-className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-xl active:cursor-grabbing dark:border-slate-700 dark:bg-[#111827]"    >
+className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-xl active:cursor-grabbing"    >
 <div
  
   className="flex cursor-grab items-center justify-between"
@@ -138,7 +138,7 @@ className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-x
       onChange={(e) =>
         setEditTitle(e.target.value)
       }
-      className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none focus:border-blue-400 dark:border-slate-700 dark:bg-[#0f172a] dark:text-white"
+      className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none focus:border-blue-400"
     />
 
     <select
@@ -148,7 +148,7 @@ className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-x
           e.target.value as Priority
         )
       }
-      className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none focus:border-blue-400 dark:border-slate-700 dark:bg-[#0f172a] dark:text-white"
+      className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none focus:border-blue-400"
     >
       <option value="Low">
         Low Priority
@@ -196,7 +196,7 @@ className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-x
     e.stopPropagation();
     setEditingTaskId(null);
   }}
-  className="rounded-lg bg-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-white"
+  className="rounded-lg bg-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-300"
 >
   Cancel
 </button>
@@ -204,11 +204,11 @@ className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-x
   </>
 ) : (
   <>
-    <h3 className="mt-4 text-sm font-semibold text-slate-900 dark:text-white">
+    <h3 className="mt-4 text-sm font-semibold text-slate-900">
       {task.title}
     </h3>
 
-    <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
+    <p className="mt-2 text-sm text-slate-700">
       {task.description}
     </p>
 
@@ -219,13 +219,13 @@ className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-x
           {task.assignee.charAt(0)}
         </div>
 
-        <span className="text-xs text-slate-700 dark:text-slate-300">
+        <span className="text-xs text-slate-700">
           {task.assignee}
         </span>
 
       </div>
 
-      <span className="text-xs text-slate-700 dark:text-slate-400">
+      <span className="text-xs text-slate-700">
         {task.createdAt}
       </span>
     </div>
@@ -239,7 +239,7 @@ className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-x
           e.target.value as Status
         )
       }
-      className="mt-4 w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs text-slate-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-[#0f172a] dark:text-white"
+      className="mt-4 w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs text-slate-900 outline-none focus:border-blue-500"
     >
       {columns.map((col) => (
         <option
@@ -264,7 +264,7 @@ className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-x
     e.stopPropagation();
     startEdit(task);
   }}
-  className="rounded-lg bg-blue-100 px-3 py-2 text-xs font-medium text-blue-600 transition hover:bg-blue-200 dark:bg-blue-500/10 dark:text-blue-400"
+  className="rounded-lg bg-blue-100 px-3 py-2 text-xs font-medium text-blue-600 transition hover:bg-blue-200"
 >
   Edit
 </button>
@@ -280,7 +280,7 @@ className="cursor-grab rounded-2xl border border-slate-300 bg-white p-4 shadow-x
     e.stopPropagation();
     deleteTask(task.id, column);
   }}
-  className="rounded-lg bg-red-100 px-3 py-2 text-xs font-medium text-red-600 transition hover:bg-red-200 dark:bg-red-500/10 dark:text-red-400"
+  className="rounded-lg bg-red-100 px-3 py-2 text-xs font-medium text-red-600 transition hover:bg-red-200"
 >
   Delete
 </button>
